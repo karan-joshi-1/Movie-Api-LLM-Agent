@@ -4,6 +4,7 @@ import _ from "lodash";
 import { RiMovie2Fill } from "react-icons/ri";
 import { motion, AnimatePresence } from "framer-motion";
 import { PiFilmSlateBold } from "react-icons/pi";
+import Markdown from 'react-markdown'
 
 export const agentStatus = {
   LIVE: 1,
@@ -117,7 +118,7 @@ const App = ({ socket }) => {
           </h6>
           <div className="flex w-full gap-x-2">
             <input
-              className="rounded-xl p-3 text-black grow border-2 bg-slate-100 active:border-4 select:border-pink-500 disabled:bg-slate-400"
+              className="rounded-xl p-3 text-black grow border-2 bg-slate-100 active:border-4 disabled:bg-slate-400"
               placeholder="Get answers about everything from IMDb, just ask!"
               ref={inputRef}
               disabled={status === agentStatus.WORKING}
@@ -176,11 +177,13 @@ const App = ({ socket }) => {
                     >
                       {answer["answer"] && answer["answer"].length > 0 && (
                         <div
-                          className={
-                            "text-center flex items-center justify-center p-2 text-lg font-semibold text-wrap select-all selection:bg-yellow-300 selection:text-black w-[70%]"
+                        className={
+                          "text-center flex items-center justify-center p-2 text-lg font-semibold text-wrap select-all selection:bg-yellow-300 selection:text-black w-[70%]"
                           }
-                        >
+                          >
+                        <Markdown>
                           {answer["answer"]}
+                        </Markdown>
                         </div>
                       )}
                       {answer["answer"] && answer["image"] && answer["answer"].length > 0 && answer["image"]?.length > 0 && (
@@ -209,4 +212,5 @@ const App = ({ socket }) => {
   );
 };
 
+export default App;
 export default App;
