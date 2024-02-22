@@ -200,7 +200,7 @@ api_tools = [
         This can be used to determing actors with a particular birthday date.
 
         Input: Month and Day in integer format.
-        Output: JSON containing IDs of actors with particular month and day
+        Output: JSON containing IDs of actors with particular month and day. 
         """
     ),
     Tool(
@@ -210,8 +210,8 @@ api_tools = [
         This can be used to determing most popular celebs/actors. 
         Use this only specifically needed.
 
-        Input: None
-        Output: JSON containing IDs of most popular celebs
+        Input: ""
+        Output: JSON containing IDs of most popular celebs. Search these IDs with "find" for more details.
         """
     ),
     Tool(
@@ -221,8 +221,8 @@ api_tools = [
         This can be used to determing most popular movies. 
         Use this only specifically needed.
 
-        Input: None
-        Output: JSON containing IDs of most popular movies titles
+        Input: ""
+        Output: JSON containing IDs of most popular movies titles. Search these IDs with "find" for more details.
         """
     ),
     Tool(
@@ -231,8 +231,8 @@ api_tools = [
         description="""        
         This can be used to determing most popular tv shows. Use this only specifically needed.
 
-        Input: None
-        Output: JSON containing IDs of most popular tvseries titles
+        Input: ""
+        Output: JSON containing IDs of most popular tvseries titles. Search these IDs with "find" for more details.
         """
     ),
     Tool(
@@ -365,7 +365,7 @@ api_tools = [
         description="""
         This can be used to determine the coming soon TV movies.
         
-        Input: None
+        Input: ""
         Output: JSON containing the IDs of the coming soon movie or tvseries title with their release date.
         """
     ),
@@ -375,7 +375,7 @@ api_tools = [
         description="""
         This can be used to determine the coming soon TV shows.
 
-        Input: None
+        Input: ""
         Output: JSON containing the IDs of the coming soon TV Shows with their release date.
         """
     ),
@@ -419,10 +419,14 @@ api_tools = [
         name="final-search",
         func=search.run,
         description=""" 
-        INSTRUCTIONS
-        1. If the query is not relevant to movies, tvseries, actor or movie or tvseries stories, return that you do not know as you are a movie bot and contain information from IMDb only.
-        2. DO NOT RETURN LINKS OR ID
+        Look for answer here, only if not found using any other tool. 
         
+        ``
+        Only movie, tvseries, actor related inputs are allowed.
+        ``
+
+
+        INSTRUCTIONS
         Input: Question of the user
         Output: Answer
         """,
